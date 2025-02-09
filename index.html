@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine's Day Card</title>
+<style>
+    body {
+        background-color: #f8e8e8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .envelope {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        background: #d6336c;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+
+    .envelope:before,
+    .envelope:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+
+    .envelope:before {
+        top: 0;
+        left: 0;
+        border-width: 100px 150px 0 150px;
+        border-color: #f06595 transparent transparent transparent;
+    }
+
+    .envelope:after {
+        bottom: 0;
+        left: 0;
+        border-width: 0 150px 100px 150px;
+        border-color: transparent transparent #f06595 transparent;
+    }
+
+    .card {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 260px;
+        height: 160px;
+        background: white;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transform: translateY(150px);
+        transition: transform 0.8s ease-in-out;
+        z-index: -1;
+    }
+
+    .envelope.open .card {
+        transform: translateY(0);
+    }
+
+    .card h1 {
+        color: #d6336c;
+        text-align: center;
+    }
+
+    .card p {
+        font-size: 14px;
+        color: #444;
+        text-align: center;
+    }
+
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        animation: float 2s infinite;
+    }
+
+    .heart:before,
+    .heart:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+    }
+
+    .heart:before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart:after {
+        top: 0;
+        left: 10px;
+    }
+
+    @keyframes float {
+        0% { transform: translate(-50%, -50%) rotate(-45deg) translateY(0); }
+        50% { transform: translate(-50%, -50%) rotate(-45deg) translateY(-10px); }
+        100% { transform: translate(-50%, -50%) rotate(-45deg) translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<div class="envelope" onclick="openCard()">
+    <div class="card">
+        <h1>Happy Valentine's Day!</h1>
+        <img src="D:\VS\Lab_card\roses.jpg" alt="Cute Couple" style="width:100%; border-radius:5px;">
+        <p>My love for you grows stronger every day. You're the best thing that ever happened to me. I love you always!</p>
+    </div>
+    <div class="heart"></div>
+</div>
+
+<script>
+    function openCard() {
+        document.querySelector('.envelope').classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
